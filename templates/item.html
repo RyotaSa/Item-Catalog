@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('disconnect')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+		{% endblock %}
+{% block Items %}
+<div class="container-fluid">
+    <div class="row fh5co-post-entry single-entry">
+        <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+
+            <h2 class="fh5co-article-title animate-box">{{category.name}}</h2>
+
+            <h3><a href="{{url_for('newItem', category_id = category.id)}}">Add New Catalog Item</a></h3>
+
+            <!--MESSAGE FLASHING EXAMPLE -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+            <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+              <li>{{message}}</li>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!--Loop the Items-->
+            {% for i in items %}
+            <div class="fh5co-post-entry article content-article">
+                <blockquote>
+                    <p>&ldquo;{{i.name}}&rdquo;</p>
+                </blockquote>
+            <p>{{i.description}}<cite>&mdash; {{i.id}}</cite></p>
+
+                <span class="fh5co-meta"><a class="btn btn-warning" href="{{url_for('editItem', category_id=category.id, item_id=i.id )}}">
+                            Edit Name</a>
+                </span>
+
+                <span class="fh5co-meta"><a class="btn btn-info" href="{{url_for('editItemDes', category_id=category.id, item_id=i.id )}}">
+                            Edit Description</a>
+                </span>
+
+                <span class="fh5co-meta"><a class="btn btn-danger" href="{{url_for('deleteItem', category_id=category.id, item_id=i.id )}}">
+                            Delete Item</a>
+                </span>
+            </div>
+            {% endfor %}
+        </article>
+    </div>
+</div>
+{% endblock %}

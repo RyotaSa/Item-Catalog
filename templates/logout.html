@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('showLogin')}}"><i class="fa fa-user-o" aria-hidden="true"></i> Signin</a></li>
+		{% endblock %}
+{% block logout %}
+    <div class="col-md-12 text-center">
+		<!--Flash Message-->
+			<div class ="row text-center">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="col-md-6 col-md-offset-3 alert alert-warning" role="alert">
+					{% for message in messages %}
+						<li>{{ message }}</li>
+					{% endfor %}
+				</div>
+				{% endif %}
+			{% endwith %}
+			</div>
+		<br>
+        <h3>Back to <a href="{{url_for('showCategory')}}"> Home</a></h3>
+    </div>
+{% endblock %}

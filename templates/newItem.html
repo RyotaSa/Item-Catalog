@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('disconnect')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+		{% endblock %}
+{% block newItem %}
+    <div class="col-md-12 text-center">
+        <h1> New Item </h1>
+        <form action="{{url_for('newItem', category_id=category_id )}}" method = 'POST'>
+            <p>Add Name:</p>
+            <input type='text' size='30' name='name'>
+            <input type='submit' value='Create' class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}

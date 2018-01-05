@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('showLogin')}}"><i class="fa fa-user-o" aria-hidden="true"></i> Signin</a></li>
+		{% endblock %}
+{% block publicItems %}
+<div class="container-fluid">
+    <div class="row fh5co-post-entry single-entry">
+        <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+            <h2 class="fh5co-article-title animate-box">{{category.name}}</h2>
+            {% for user in creator %}
+            <h3>Added by {{user.name}}</h3>
+            {% endfor %}
+                <!--Loop the Items-->
+                {% for i in items %}
+                <div class="fh5co-post-entry article content-article text-center">
+                    <blockquote>
+                        <p>&ldquo;{{i.name}}&rdquo;</p>
+                    </blockquote>
+                <p>{{i.description}}<cite>&mdash; {{i.price}}</cite></p>
+                </div>
+                {% endfor %}
+        </article>
+    </div>
+</div>
+{% endblock %}

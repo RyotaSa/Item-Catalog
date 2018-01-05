@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('disconnect')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+		{% endblock %}
+{% block editItemDescription %}
+    <div class="col-md-12 text-center">
+        <h1>Edit Catalog Item Description</h1>
+        <form action="{{url_for('editItemDes', category_id=category_id, item_id=item.id )}}" method = 'POST' id="editItemDesform">
+            <p>Description:</p>
+                <textarea type="text" rows="3" cols="40" name='description' placeholder="{{item.description}}">
+                </textarea>
+            <br>
+                <input type='submit' value='Edit' class="btn btn-warning">
+            <a href="{{url_for('catalogItemList', category_id=item.category_id)}}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('disconnect')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a></li>
+		{% endblock %}
+{% block editItem %}
+    <div class="col-md-12 text-center">
+        <h1>Edit Catalog Item Name</h1>
+        <form action="{{url_for('editItem', category_id=category_id, item_id=item.id )}}" method = 'POST' id="editItemform">
+            <p>Name:</p>
+                <input type='text' size='30' name='name' placeholder="{{item.name}}">
+            <br>
+            <br>
+                <input type='submit' value='Edit' class="btn btn-warning">
+            <a href="{{url_for('catalogItemList', category_id=item.category_id)}}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

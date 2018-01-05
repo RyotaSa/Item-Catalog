@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+		{% block sign %}
+			<li><a href="{{url_for('showLogin')}}"><i class="fa fa-user-o" aria-hidden="true"></i> Signin</a></li>
+		{% endblock %}
+{% block publicCatalog %}
+		<div class="container-fluid">
+			<!--Main Items-->
+			<div class="row fh5co-post-entry">
+				{% for category in categories %}
+				<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+					<h2 class="fh5co-article-title"><a href="{{url_for('catalogItemList', category_id = category.id)}}">
+						{{category.name}}</a>
+					</h2>
+                    <span class="fh5co-meta fh5co-date"><a href = "{{url_for('editCategory', category_id = category.id)}}">
+                    Edit Category</a>
+                    </span>
+				</article>
+				{% endfor %}
+			</div>
+		</div>
+{% endblock %}
